@@ -90,3 +90,36 @@ exports.deleteProduct = (req, res) => {
     res.status(404).json({ message: 'Producto no encontrado' });
   }
 };
+
+
+// Obtener productos por año
+exports.getProductsByYear = (req, res) => {
+  loadProducts();
+  const { yr } = req.params;
+  const filteredProducts = products.filter((p) => p.yr === yr);
+  res.json(filteredProducts);
+};
+
+// Obtener productos retro
+exports.getRetroProducts = (req, res) => {
+  loadProducts();
+  const { retro } = req.params;
+  const filteredProducts = products.filter((p) => p.retro.toString() === retro);
+  res.json(filteredProducts);
+};
+
+// Obtener productos por equipo
+exports.getProductsByTeam = (req, res) => {
+  loadProducts();
+  const { team } = req.params;
+  const filteredProducts = products.filter((p) => p.team.toLowerCase() === team.toLowerCase());
+  res.json(filteredProducts);
+};
+
+// Obtener productos por estado
+exports.getProductsByState = (req, res) => {
+  loadProducts();
+  const { state } = req.params;
+  const filteredProducts = products.filter((p) => p.state.toLowerCase() === state.toLowerCase());
+  res.json(filteredProducts);
+};
