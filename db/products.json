@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Zapas",
+    "description": "Descripción del producto",
+    "price": 50,
+    "state": "Nuevo",
+    "yr": "2022",
+    "retro": false,
+    "team": "Nombre del equipo",
+    "img": "url_de_la_imagen.jpg",
+    "XL": 10,
+    "L": 20,
+    "M": 30,
+    "S": 40,
+    "id": 2
+  }
+]

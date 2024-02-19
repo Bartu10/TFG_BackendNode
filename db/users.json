@@ -1,0 +1,15 @@
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "username": "john_doe",
+    "email": "john.doe@example.com",
+    "admin": false,
+    "password": "hashed_password",
+    "imageid": "user_image.jpg",
+    "orders": [
+      1
+    ]
+  }
+
+]
