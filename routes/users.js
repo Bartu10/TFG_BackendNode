@@ -16,7 +16,7 @@ router.post("/login", loginUser)
 
 // Extra
 router.get("/mail/:email", emailUser)
-router.put("/image/id/:id", updateImageUser)
+router.put("/image/:id", updateImageUser)
 
 
 module.exports = router;
