@@ -93,7 +93,7 @@ exports.updateImageUser = (req, res) => {
   // Guardar los datos actualizados en el archivo
   try {
     fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2));
-    res.json(updatedUser);
+    res.status(200).json(updatedUser);
   } catch (error) {
     console.error('Error al escribir en el archivo de users:', error.message);
     res.status(500).json({ message: 'Error interno del servidor' });
