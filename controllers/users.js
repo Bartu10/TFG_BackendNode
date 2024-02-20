@@ -47,10 +47,21 @@ exports.updateUser = (req, res) => {
 
   // Implementa la lógica de actualización según tus necesidades
 
+  const user = users.find((u) => u.id == userId);
+
+  user.name = updatedUser.name;
+  user.email = updatedUser.email;
+  user.admin = updatedUser.admin;
+  user.username = updatedUser.username;
+  user.password = updatedUser.password;
+
+  console.log(user)
+
+
   // Guardar los datos actualizados en el archivo
   try {
     fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2));
-    res.json(updatedUser);
+    res.json(user);
   } catch (error) {
     console.error('Error al escribir en el archivo de users:', error.message);
     res.status(500).json({ message: 'Error interno del servidor' });
