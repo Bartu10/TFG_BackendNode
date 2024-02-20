@@ -25,7 +25,7 @@ const addImage = async (req, res) => {
 
     await newImage.save();
     /////Cambiar la devulcion a el id de la imagen
-    res.status(201).json({ message: 'Image added successfully' });
+    res.status(201).json({ imageid: newImage._id });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
