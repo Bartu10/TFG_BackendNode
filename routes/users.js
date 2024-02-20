@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 // Controladores
-const { getAllUsers, getUserById, createUser, updateUser, deleteUser, loginUser, emailUser} = require('../controllers/users');
+const { getAllUsers, getUserById, createUser, updateUser, deleteUser, loginUser, emailUser, updateImageUser} = require('../controllers/users');
 
 // Definición de rutas
 router.get('/', getAllUsers);
@@ -16,7 +16,7 @@ router.post("/login", loginUser)
 
 // Extra
 router.get("/mail/:email", emailUser)
-
+router.put("/image/:id", updateImageUser)
 
 
 module.exports = router;

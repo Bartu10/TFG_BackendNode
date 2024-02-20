@@ -81,6 +81,26 @@ exports.emailUser = (req, res) => {
 }
 
 
+exports.updateImageUser = (req, res) => {
+  const userId = req.params.id;
+  const imageid = req.body;
+
+  // Implementa la lógica de actualización según tus necesidades
+
+  const user = users.find((u) => u.id == userId);
+  user.imageId = imageid.imageId;
+
+  // Guardar los datos actualizados en el archivo
+  try {
+    fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2));
+    res.json(updatedUser);
+  } catch (error) {
+    console.error('Error al escribir en el archivo de users:', error.message);
+    res.status(500).json({ message: 'Error interno del servidor' });
+  }
+}
+
+
 
 exports.deleteUser = (req, res) => {
   const userId = req.params.id;
