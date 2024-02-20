@@ -15,6 +15,7 @@ const {
     getRetroProducts,
     getProductsByTeam,
     getProductsByState,
+    getProductByLowestSum
   } = require('../controllers/products');
 
 // Definición de rutas
@@ -30,6 +31,7 @@ router.get('/year/:yr', getProductsByYear);
 router.get('/retro/:retro', getRetroProducts);
 router.get('/team/:team', getProductsByTeam);
 router.get('/state/:state', getProductsByState);
+router.get('/lowestSum/low', getProductByLowestSum);
 
 
 

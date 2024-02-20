@@ -123,3 +123,16 @@ exports.getProductsByState = (req, res) => {
   const filteredProducts = products.filter((p) => p.state.toLowerCase() === state.toLowerCase());
   res.json(filteredProducts);
 };
+
+exports.getProductByLowestSum = (req, res) => {
+  loadProducts();
+  const sortedProducts = products.sort((a, b) => {
+    const sumaA = a.XL + a.L + a.M + a.S;
+    const sumaB = b.XL + b.L + b.M + b.S;
+    return sumaA - sumaB;
+  });
+
+  const result = sortedProducts.slice(0, 4);
+  res.json(result);
+
+}

@@ -62,11 +62,25 @@ exports.loginUser = (req, res) => {
   const user = users.find((u) => u.email === email && u.password === password);
   console.log(user)
   if (user) {
-    res.json({ message: 'Usuario autenticado correctamente' });
+    res.json({ user: user });
   } else {
     res.status(401).json({ message: 'Credenciales inválidas' });
   }
 }
+
+
+exports.emailUser = (req, res) => {
+  const email = req.params.email;
+  const user = users.find((u) => u.email === email);
+  console.log(user)
+  if (user) {
+    res.json({ user: user });
+  } else {
+    res.status(401).json({ message: 'Credenciales inválidas' });
+  }
+}
+
+
 
 exports.deleteUser = (req, res) => {
   const userId = req.params.id;

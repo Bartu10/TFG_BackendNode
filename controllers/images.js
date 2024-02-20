@@ -24,7 +24,7 @@ const addImage = async (req, res) => {
     });
 
     await newImage.save();
-
+    /////Cambiar la devulcion a el id de la imagen
     res.status(201).json({ message: 'Image added successfully' });
   } catch (error) {
     console.error(error);
@@ -40,8 +40,8 @@ const getImage = async (req, res) => {
     if (!image) {
       return res.status(404).json({ message: 'Image not found' });
     }
-
-    res.send(`data:image/jpeg;base64, ${image.image.toString('base64')}`);
+    
+    res.status(200).send(`data:image/jpeg;base64, ${image.image.toString('base64')}`);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
