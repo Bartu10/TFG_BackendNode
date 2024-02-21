@@ -29,7 +29,16 @@ exports.getOrderById = (req, res) => {
 
 exports.createOrder = (req, res) => {
   const newOrder = req.body;
+
+
+// Obtener el último elemento usando el operador de propagación
+const ultimoElemento = [...orders].pop();
+  console.log(ultimoElemento);
+  newOrder.id = ultimoElemento.id + 1;
   orders.push(newOrder);
+
+  
+
 
   // Guardar los datos actualizados en el archivo
   try {
