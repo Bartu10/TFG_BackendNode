@@ -31,6 +31,12 @@ exports.createProductOrder = (req, res) => {
   const newProductOrder = req.body;
   productOrders.push(newProductOrder);
 
+
+  const ultimoElemento = [...productOrders].pop();
+  console.log(ultimoElemento);
+  newProductOrder.id = ultimoElemento.id + 1;
+  orders.push(newProductOrder);
+
   // Guardar los datos actualizados en el archivo
   try {
     fs.writeFileSync(productOrdersFilePath, JSON.stringify(productOrders, null, 2));
