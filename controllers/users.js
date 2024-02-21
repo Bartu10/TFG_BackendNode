@@ -116,18 +116,27 @@ exports.updateImageUser = (req, res) => {
 }
 
 
-
 exports.deleteUser = (req, res) => {
   const userId = req.params.id;
 
   // Implementa la lógica de eliminación según tus necesidades
 
-  // Guardar los datos actualizados en el archivo
-  try {
-    fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2));
-    res.json({ message: 'Usuario eliminado correctamente' });
-  } catch (error) {
-    console.error('Error al escribir en el archivo de users:', error.message);
-    res.status(500).json({ message: 'Error interno del servidor' });
+  const user = users.findIndex((u) => u.id == userId);
+
+  if (user !== -1) {
+    // Eliminar el usuario del array usando splice
+    users.splice(user, 1);
+
+    // Guardar los datos actualizados en el archivo
+    try {
+      fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2));
+      res.json({ user: user });
+    } catch (error) {
+      console.error('Error al escribir en el archivo de users:', error.message);
+      res.status(500).json({ message: 'Error interno del servidor' });
+    }
+  } else {
+    // El usuario no se encontró
+    res.status(404).json({ message: 'Usuario no encontrado' });
   }
 };
