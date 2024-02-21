@@ -35,7 +35,7 @@ exports.createProductOrder = (req, res) => {
   const ultimoElemento = [...productOrders].pop();
   console.log(ultimoElemento);
   newProductOrder.id = ultimoElemento.id + 1;
-  orders.push(newProductOrder);
+  productOrders.push(newProductOrder);
 
   // Guardar los datos actualizados en el archivo
   try {
