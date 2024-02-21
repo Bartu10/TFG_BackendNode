@@ -29,9 +29,7 @@ exports.getProductOrderById = (req, res) => {
 
 exports.createProductOrder = (req, res) => {
   const newProductOrder = req.body;
-  productOrders.push(newProductOrder);
-
-
+  
   const ultimoElemento = [...productOrders].pop();
   console.log(ultimoElemento);
   newProductOrder.id = ultimoElemento.id + 1;
